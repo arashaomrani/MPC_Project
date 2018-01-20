@@ -2,6 +2,16 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Model
+Kinemetic model is used as the model for this project which does not take into account the complex interactions between the road and tires:
+
+x[t+1] = x[t] + v[t] * cos(psi[t]) * dt
+y[t+1] = y[t] + v[t] * sin(psi[t]) * dt
+psi[t+1] = psi[t] + v[t] / Lf * delta[t] * dt
+v[t+1] = v[t] + a[t] * dt
+cte[t+1] = f(x[t]) - y[t] + v[t] * sin(epsi[t]) * dt
+epsi[t+1] = psi[t+1] - psides[t] + v[t] * delta[t] / Lf * dt
+
 
 ## Dependencies
 
