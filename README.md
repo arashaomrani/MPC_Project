@@ -2,6 +2,16 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+##Project Steps
+
+* Fitting a line based on road waypoints and evaluating the current state based on that polynomial line.
+* Implementing the MPC calculation, including setting variables and constraints
+* Calculating actuator values from the MPC calc based on current state
+* Accounting for latency (I used a predicted state 100ms in the future to replace the actual current state in the calculation)
+* Calculating steering angle & throttle/brake based on the actuator values
+* Setting timestep length and duration
+* Testing/tuning of above implementations on Udacity simulator
+
 ## Model
 Kinemetic model is used as the model for this project which does not take into account the complex interactions between the road and tires:
 
@@ -26,6 +36,17 @@ The model outputs are:
 * a which is car acceleration (throttle)
 * delat which is the steering angle
 
+## Timestep Length and Elapsed Duration (N & dt)
+
+The number of points(N) and the time interval(dt) define the prediction horizon. The number of points impacts the controller performance as well. I tried to keep the horizon around the same time the waypoints were on the simulator. With too many points the controller starts to run slower, and some times it went wild very easily. After trying with N from 10 to 20 and dt 100 to 500 milliseconds, I decided to leave them fixed to 10 and 100 milliseconds to have a better result tuning the other parameters.
+
+## Polynomial Fitting and MPC Preprocessing
+
+The waypoints provided by the simulator are transformed to the car coordinate system at ./src/main.cpp from line 104 to line 113. Then a 3rd-degree polynomial is fitted to the transformed waypoints. These polynomial coefficients are used to calculate the cte and epsi later on. They are used by the solver as well to create a reference trajectory.
+
+## Model Predictive Control with Latency
+
+To handle actuator latency, the state values are calculated using the model and the delay interval. These values are used instead of the initial one. The code implementing that could be found at ./src/main.cpp from line 121 to line 139.
 
 
 
