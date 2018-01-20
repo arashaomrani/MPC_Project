@@ -19,6 +19,15 @@ Where:
 * v is the car velocity.
 * cte is the cross-track error.
 * epsi is the orientation error.
+* Lf is the distance between car's center of mass and front wheels.
+
+The model outputs are:
+
+* a which is car acceleration (throttle)
+* delat which is the steering angle
+
+
+
 
 ## Dependencies
 
