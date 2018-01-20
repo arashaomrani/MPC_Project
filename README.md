@@ -12,6 +12,13 @@ v[t+1] = v[t] + a[t] * dt
 cte[t+1] = f(x[t]) - y[t] + v[t] * sin(epsi[t]) * dt
 epsi[t+1] = psi[t+1] - psides[t] + v[t] * delta[t] / Lf * dt
 
+Where:
+
+* x, y : Car's position.
+* psi : Car's heading direction.
+* v : Car's velocity.
+* cte : Cross-track error.
+* epsi : Orientation error.
 
 ## Dependencies
 
