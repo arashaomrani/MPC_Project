@@ -40,13 +40,13 @@ The model outputs are:
 
 The number of points(N) and the time interval(dt) define the prediction horizon. The number of points impacts the controller performance as well. I tried to keep the horizon around the same time the waypoints were on the simulator. With too many points the controller starts to run slower. After trying with diffrent values for N and dt the values of 10 and 100 milliseconds are used in the model.
 
-## Polynomial Fitting and MPC Preprocessing
+## Polynomial Fitting
 
-The waypoints provided by the simulator are transformed to the car coordinate system at ./src/main.cpp from line 104 to line 113. Then a 3rd-degree polynomial is fitted to the transformed waypoints. These polynomial coefficients are used to calculate the cte and epsi later on. They are used by the solver as well to create a reference trajectory.
+The waypoints provided by the simulator are transformed to the car coordinate system at main.cpp from line 102 to line 107. Then a 3rd-degree polynomial is fitted to the transformed waypoints. These polynomial coefficients are used to calculate the cte and epsi later on. They are used by the solver as well to create a reference trajectory.
 
 ## Model Predictive Control with Latency
 
-To handle actuator latency, the state values are calculated using the model and the delay interval. These values are used instead of the initial one. The code implementing that could be found at ./src/main.cpp from line 121 to line 139.
+To handle actuator latency, the state values are calculated using the model and the delay interval. These values are used instead of the initial ones to fed into the mpc.solve().
 
 
 
