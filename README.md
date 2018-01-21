@@ -38,7 +38,7 @@ The model outputs are:
 
 ## Timestep Length and Elapsed Duration (N & dt)
 
-The number of points(N) and the time interval(dt) define the prediction horizon. The number of points impacts the controller performance as well. I tried to keep the horizon around the same time the waypoints were on the simulator. With too many points the controller starts to run slower, and some times it went wild very easily. After trying with N from 10 to 20 and dt 100 to 500 milliseconds, I decided to leave them fixed to 10 and 100 milliseconds to have a better result tuning the other parameters.
+The number of points(N) and the time interval(dt) define the prediction horizon. The number of points impacts the controller performance as well. I tried to keep the horizon around the same time the waypoints were on the simulator. With too many points the controller starts to run slower. After trying with diffrent values for N and dt the values of 10 and 100 milliseconds are used in the model.
 
 ## Polynomial Fitting and MPC Preprocessing
 
