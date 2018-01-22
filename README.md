@@ -46,7 +46,8 @@ The waypoints provided by the simulator are transformed to the car coordinate sy
 
 ## Model Predictive Control with Latency
 
-To handle actuator latency, the state values are calculated using the model and the delay interval. These values are used instead of the initial ones to fed into the mpc.solve().
+It is very important aspect of this project, the model accounts for the simulator's 100ms latency between the actuator calculation (when the model tells the car to perform a steering or acceleration/braking change) and when the simulator will actually perform that action.
+To handle actuator latency, the state values are calculated using the model and the delay interval. The latency equal to dt used and used the same update equations as those used in the actual MPC model, predicted the state and fed that into the true model. This predicted state and the coefficients are fed into the mpc.solve().
 
 
 
